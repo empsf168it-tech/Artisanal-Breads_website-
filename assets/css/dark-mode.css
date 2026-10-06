@@ -1,0 +1,63 @@
+/* 🌗 Dark Theme Variables — Royal Viennoiserie & Bordeaux */
+
+[data-theme="dark"] {
+    --primary: #FFFDF9;
+    /* Light text in dark mode */
+    --secondary: #140B10;
+    /* Deep Velvet Bordeaux - Dark Mode Background */
+    --accent: #E8B958;
+    /* Croissant Honey Gold */
+    --accent-gold: #E8B958;
+    --text-muted-light: #C9A7B6;
+    --border-light: #3D2434;
+    --bg-color: #140B10;
+    --text-color: #FFFDF9;
+    --nav-icon-color: #E8B958;
+    --toggler-filter: invert(1);
+}
+
+/* Global Fix for hardcoded Tailwind text-primary and bg-secondary across all pages */
+[data-theme="dark"] body,
+[data-theme="dark"] .bg-secondary {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .text-primary {
+    color: var(--primary) !important;
+}
+
+[data-theme="dark"] .linen-texture {
+    opacity: 0.05 !important;
+}
+
+[data-theme="dark"] section[class*="bg-secondary"] {
+    background-color: var(--bg-color) !important;
+}
+
+[data-theme="dark"] .bread-card {
+    background-color: #22131C;
+    border-color: #3D2434;
+    color: #FFFDF9;
+}
+
+[data-theme="dark"] .dashboard-sidebar {
+    background-color: #140B10;
+    border-color: #3D2434;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+    color: #FFFDF9;
+}
+
+[data-theme="dark"] .btn-secondary {
+    border-color: #E8B958;
+    color: #E8B958;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: #E8B958;
+    color: #140B10;
+}

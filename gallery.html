@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Visual Bakery Chronicles | Crumb & Craft Artisanal Gallery</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Explore Crumb & Craft's visual bakery chronicles. From crusty sourdough loaves and delicate viennoiserie to handmade confections and seasonal bakes.">
+
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3A1E2D',
+                        secondary: '#FFFDF9',
+                        accent: '#BA5C3D',
+                        'accent-gold': '#E8B958',
+                        bordeaux: '#3A1E2D',
+                        vanilla: '#F8F2E8',
+                        espresso: '#1E1418',
+                        warmwhite: '#FFFDF9',
+                        'dark-bg': '#140B10',
+                        'dark-surface': '#22131C',
+                        'dark-border': '#3D2434',
+                    },
+                    fontFamily: {
+                        playfair: ['Cormorant Garamond', 'serif'],
+                        cormorant: ['Cormorant Garamond', 'serif'],
+                        dm: ['Manrope', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        },
+                        marqueeReverse: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0%)' }
+                        },
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 35s linear infinite',
+                        marqueeReverse: 'marqueeReverse 38s linear infinite',
+                        floatSlow: 'floatSlow 6s ease-in-out infinite',
+                        pulseGlow: 'pulseGlow 4s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+
+    <style>
+        .gallery-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        .glass-badge {
+            background: rgba(90, 56, 37, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(232, 185, 88, 0.3);
+        }
+
+        .filter-btn.active {
+            background-color: #BA5C3D;
+            color: #ffffff;
+            border-color: #BA5C3D;
+            box-shadow: 0 10px 20px -5px rgba(186, 92, 61, 0.4);
+        }
+
+        .timeline-step.active .step-indicator {
+            background-color: #BA5C3D;
+            color: #ffffff;
+            box-shadow: 0 0 0 6px rgba(186, 92, 61, 0.2);
+        }
+
+        .tab-btn.active {
+            border-color: #BA5C3D;
+            color: #BA5C3D;
+            background-color: rgba(186, 92, 61, 0.08);
+        }
+
+        /* Modal Lightbox */
+        #lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox-modal.active #lightbox-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body class="bg-secondary text-primary transition-colors duration-300">
+    <div class="linen-texture fixed inset-0 z-[-1] opacity-10"></div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Crumb & Craft</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="gallery.html" class="nav-link-underline font-medium text-accent">Gallery</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <div class="hidden xl:flex items-center gap-3">
+                    <a href="contact.html" class="btn-primary py-2 px-4 text-sm">Join Club</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="gallery.html" class="py-3 border-b border-border-light dark:border-dark-border text-accent">Gallery</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="contact.html" class="btn-primary text-center">Join Club</a>
+            </div>
+        </nav>
+        <div class="mt-auto pb-8 flex justify-center gap-6 opacity-60">
+            <span class="w-6 h-6 font-bold text-xs">FB</span>
+            <span class="w-6 h-6 font-bold text-xs">IG</span>
+            <span class="w-6 h-6 font-bold text-xs">TW</span>
+        </div>
+    </aside>
+
+    <main>
+        <!-- ===================================================================
+             SECTION 1: HERO & INTERACTIVE FILTERABLE ARTISANAL BAKE VAULT
+             =================================================================== -->
+        <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12 overflow-hidden">
+            <!-- Ambient Background Elements -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="container mx-auto relative z-10">
+                <!-- Header Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold text-xs tracking-widest uppercase mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+                        Crumb & Craft Visual Chronicles
+                    </div>
+                    <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-6">
+                        Visual <span class="italic text-accent">Chronicles</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-primary/70 dark:text-[#F5EBDD]/70 font-dm leading-relaxed">
+                        A sensory look inside our bakery. From slow-fermented crusty sourdough loaves to delicate viennoiserie, elegant cakes, and handmade confections.
+                    </p>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 mt-10" id="gallery-filter-container">
+                        <button class="filter-btn active px-6 py-2.5 rounded-full border border-border-light dark:border-dark-border text-sm font-semibold transition-all"
+                            data-filter="all">All Bakes</button>
+                        <button class="filter-btn px-6 py-2.5 rounded-full border border-border-light dark:border-dark-border text-sm font-semibold transition-all hover:border-accent"
+                            data-filter="sourdough">Artisan Breads</button>
+                        <button class="filter-btn px-6 py-2.5 rounded-full border border-border-light dark:border-dark-border text-sm font-semibold transition-all hover:border-accent"
+                            data-filter="pastry">Pastries & Croissants</button>
+                        <button class="filter-btn px-6 py-2.5 rounded-full border border-border-light dark:border-dark-border text-sm font-semibold transition-all hover:border-accent"
+                            data-filter="confectionery">Cakes & Tarts</button>
+                        <button class="filter-btn px-6 py-2.5 rounded-full border border-border-light dark:border-dark-border text-sm font-semibold transition-all hover:border-accent"
+                            data-filter="sweets">Sweet Treats</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+                    <!-- Item 1: Country Sourdough -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="sourdough"
+                        onclick="openLightbox('https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=1200&q=90', 'Country Sourdough Loaf', 'Naturally fermented for 36 hours with stone-ground flour and open wild crumb.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=800&q=80"
+                                alt="Country Sourdough Loaf"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Artisan Bread
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Country Sourdough</h3>
+                                <p class="text-xs text-white/80 font-dm">Stone-milled flour • 36h cold fermentation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Butter & Almond Croissants -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="pastry"
+                        onclick="openLightbox('https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=1200&q=90', 'Butter & Almond Croissants', 'Hand-laminated with cultured butter into 72 delicate golden layers.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
+                                alt="Butter & Almond Croissants"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Viennoiserie
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Almond & Butter Croissants</h3>
+                                <p class="text-xs text-white/80 font-dm">72 flaky layers • Pure French butter</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Chocolate Ganache Tart -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="confectionery"
+                        onclick="openLightbox('https://images.unsplash.com/photo-1587314168485-3236d6710814?w=1200&q=90', 'Salted Caramel Chocolate Tart', 'Single-origin dark chocolate, buttery crust, and Maldon sea salt.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=800&q=80"
+                                alt="Salted Caramel Chocolate Tart"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Confectionery
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Salted Caramel Tart</h3>
+                                <p class="text-xs text-white/80 font-dm">Rich dark chocolate ganache • Sea salt flakes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Rosemary Olive Loaf -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="sourdough"
+                        onclick="openLightbox('https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=1200', 'Rosemary Olive Sourdough', 'Loaded with fresh garden herbs, Kalamata olives, and cold-pressed olive oil.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=800"
+                                alt="Rosemary Olive Sourdough"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Artisan Bread
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Rosemary Olive Loaf</h3>
+                                <p class="text-xs text-white/80 font-dm">Garden rosemary • Extra virgin olive oil</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Chocolate & Berry Danish -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="pastry"
+                        onclick="openLightbox('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=90', 'Chocolate & Berry Danish', 'Fresh seasonal berries nestled in vanilla bean custard and flaky pastry.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
+                                alt="Chocolate & Berry Danish"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Viennoiserie
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Berry Danish & Pastries</h3>
+                                <p class="text-xs text-white/80 font-dm">Vanilla bean custard • Seasonal berries</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Sea Salt Cookies & Treats -->
+                    <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
+                        data-category="sweets"
+                        onclick="openLightbox('https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=1200&q=90', 'Handmade Cookies & Madeleines', 'Small-batch sea salt cookies, lemon madeleines, and dark chocolate brownies.')">
+                        <div class="relative h-[380px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=800&q=80"
+                                alt="Handmade Cookies & Madeleines"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                            
+                            <span class="absolute top-4 left-4 glass-badge text-accent-gold text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                                Sweet Treats
+                            </span>
+                            <span class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all group-hover:scale-110">
+                                🔍
+                            </span>
+
+                            <div class="absolute bottom-0 left-0 p-6 w-full text-white">
+                                <h3 class="font-playfair text-2xl font-bold mb-1">Sea Salt Cookies & Sweets</h3>
+                                <p class="text-xs text-white/80 font-dm">Brown butter • Dark chocolate chunks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             SECTION 2: "FROM FLOUR TO CRUST" — 4-STAGE INTERACTIVE TIMELINE
+             =================================================================== -->
+        <section class="py-24 px-6 md:px-12 bg-[#F5EBDD] dark:bg-dark-surface/40 relative border-y border-border-light dark:border-dark-border">
+            <div class="container mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+                    <span class="text-accent-gold font-bold tracking-[0.3em] uppercase text-xs">The Slow Craft Process</span>
+                    <h2 class="font-playfair text-4xl md:text-6xl font-bold mt-3 mb-6">From Flour to Golden Crust</h2>
+                    <p class="text-primary/70 dark:text-[#F5EBDD]/70 font-dm text-lg">
+                        Click through our 4 key craft milestones to see how raw organic ingredients transform into memorable breads and pastries.
+                    </p>
+                </div>
+
+                <!-- Stage Nav Stepper -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+                    <button class="timeline-step active p-4 rounded-2xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border text-left transition-all hover:scale-105"
+                        onclick="switchTimeline(1)">
+                        <span class="step-indicator w-7 h-7 rounded-full bg-accent/10 text-accent font-bold text-xs flex items-center justify-center mb-2 transition-all">01</span>
+                        <div class="font-playfair font-bold text-base">Stone-Milled Flour</div>
+                        <div class="text-[11px] opacity-60">Pure Heritage Grains</div>
+                    </button>
+
+                    <button class="timeline-step p-4 rounded-2xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border text-left transition-all hover:scale-105"
+                        onclick="switchTimeline(2)">
+                        <span class="step-indicator w-7 h-7 rounded-full bg-accent/10 text-accent font-bold text-xs flex items-center justify-center mb-2 transition-all">02</span>
+                        <div class="font-playfair font-bold text-base">36h Fermentation</div>
+                        <div class="text-[11px] opacity-60">Slow Cold Proofing</div>
+                    </button>
+
+                    <button class="timeline-step p-4 rounded-2xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border text-left transition-all hover:scale-105"
+                        onclick="switchTimeline(3)">
+                        <span class="step-indicator w-7 h-7 rounded-full bg-accent/10 text-accent font-bold text-xs flex items-center justify-center mb-2 transition-all">03</span>
+                        <div class="font-playfair font-bold text-base">Hand Lamination</div>
+                        <div class="text-[11px] opacity-60">Cultured Butter Layers</div>
+                    </button>
+
+                    <button class="timeline-step p-4 rounded-2xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border text-left transition-all hover:scale-105"
+                        onclick="switchTimeline(4)">
+                        <span class="step-indicator w-7 h-7 rounded-full bg-accent/10 text-accent font-bold text-xs flex items-center justify-center mb-2 transition-all">04</span>
+                        <div class="font-playfair font-bold text-base">Stone Deck Bake</div>
+                        <div class="text-[11px] opacity-60">Hearth Steam Expansion</div>
+                    </button>
+                </div>
+
+                <!-- Stage Detail Display Card -->
+                <div class="bg-white dark:bg-dark-surface rounded-[3rem] p-8 md:p-14 shadow-2xl border border-border-light dark:border-dark-border max-w-5xl mx-auto overflow-hidden">
+                    <div id="timeline-panel" class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center transition-all duration-500">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase" id="timeline-badge">
+                                Stage 01: Heritage Milling
+                            </div>
+                            <h3 class="font-playfair text-3xl md:text-5xl font-bold" id="timeline-title">Stone-Milled Heritage Grains</h3>
+                            <p class="text-primary/75 dark:text-[#F5EBDD]/75 leading-relaxed font-dm text-base md:text-lg" id="timeline-desc">
+                                We source whole, unbleached grains from independent mills. Cold stone milling preserves the rich germ oils, natural minerals, and rustic aroma that define Crumb & Craft loaves.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 pt-4 border-t border-border-light dark:border-dark-border" id="timeline-metrics">
+                                <div>
+                                    <span class="text-xs uppercase font-bold text-accent-gold">Hydration</span>
+                                    <p class="text-xl font-bold font-playfair">80% High Hydration</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs uppercase font-bold text-accent-gold">Ferment Temp</span>
+                                    <p class="text-xl font-bold font-playfair">24°C / 75°F Ambient</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl h-[340px] md:h-[420px]">
+                            <img id="timeline-img" src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=80"
+                                alt="Process Stage"
+                                class="w-full h-full object-cover transition-all duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             SECTION 3: THE BAKER'S SENSORY VAULT (TEXTURE & SENSORY EXPLORER)
+             =================================================================== -->
+        <section class="py-24 px-6 md:px-12 relative overflow-hidden">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left: Interactive Sensory Dials & Tabs -->
+                    <div class="lg:col-span-5 space-y-8 scroll-reveal">
+                        <div>
+                            <span class="text-accent font-bold tracking-[0.2em] uppercase text-xs">Bakery Craftsmanship</span>
+                            <h2 class="font-playfair text-4xl md:text-6xl font-bold mt-2 mb-4">The Sensory Vault</h2>
+                            <p class="text-primary/70 dark:text-[#F5EBDD]/70 font-dm">
+                                Great baking engages all the senses. Explore the texture, crumb aeration, and golden flake that make Crumb & Craft unforgettable.
+                            </p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <button class="tab-btn active w-full p-5 rounded-2xl border border-border-light dark:border-dark-border text-left flex items-center justify-between transition-all"
+                                onclick="switchSensoryTab('crumb')">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-2xl">🍯</span>
+                                    <div>
+                                        <h4 class="font-playfair font-bold text-lg">Aerated Sourdough Crumb</h4>
+                                        <p class="text-xs opacity-60">High moisture, open honeycomb structure</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-accent">→</span>
+                            </button>
+
+                            <button class="tab-btn w-full p-5 rounded-2xl border border-border-light dark:border-dark-border text-left flex items-center justify-between transition-all"
+                                onclick="switchSensoryTab('ear')">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-2xl">🥐</span>
+                                    <div>
+                                        <h4 class="font-playfair font-bold text-lg">72-Layer Flaky Croissant</h4>
+                                        <p class="text-xs opacity-60">Crisp butter lamination that shatters delicately</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-accent">→</span>
+                            </button>
+
+                            <button class="tab-btn w-full p-5 rounded-2xl border border-border-light dark:border-dark-border text-left flex items-center justify-between transition-all"
+                                onclick="switchSensoryTab('aroma')">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-2xl">🍫</span>
+                                    <div>
+                                        <h4 class="font-playfair font-bold text-lg">Velvety Chocolate Ganache</h4>
+                                        <p class="text-xs opacity-60">Rich single-origin cocoa with sea salt notes</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-accent">→</span>
+                            </button>
+
+                            <button class="tab-btn w-full p-5 rounded-2xl border border-border-light dark:border-dark-border text-left flex items-center justify-between transition-all"
+                                onclick="switchSensoryTab('song')">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-2xl">🌾</span>
+                                    <div>
+                                        <h4 class="font-playfair font-bold text-lg">Caramelized Hearth Crust</h4>
+                                        <p class="text-xs opacity-60">Audible cooling crackle fresh from the oven</p>
+                                    </div>
+                                </div>
+                                <span class="font-bold text-accent">→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Showcase Display with Texture Cards -->
+                    <div class="lg:col-span-7">
+                        <div class="relative bg-white dark:bg-dark-surface p-8 md:p-12 rounded-[3.5rem] shadow-2xl border border-border-light dark:border-dark-border overflow-hidden">
+                            <!-- Sensory Image Preview -->
+                            <div class="relative h-[380px] rounded-3xl overflow-hidden mb-8 shadow-lg">
+                                <img id="sensory-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1000&q=85"
+                                    alt="Sensory Feature"
+                                    class="w-full h-full object-cover transition-all duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
+                                    <div>
+                                        <span class="text-accent-gold font-mono text-xs uppercase" id="sensory-category">Macro Crumb Anatomy</span>
+                                        <h3 class="font-playfair text-2xl font-bold" id="sensory-title">Honeycomb Aerated Crumb</h3>
+                                    </div>
+                                    <span class="px-4 py-1.5 rounded-full bg-accent text-white font-bold text-xs" id="sensory-stat">80% Hydration</span>
+                                </div>
+                            </div>
+
+                            <!-- Sensory Profile Attributes -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                                <div class="p-4 rounded-2xl bg-secondary/50 dark:bg-dark-bg/60 border border-border-light dark:border-dark-border">
+                                    <span class="text-xs font-bold uppercase text-accent-gold">Crunch Level</span>
+                                    <div class="text-2xl font-bold font-playfair text-primary dark:text-white mt-1" id="sensory-meter1">9.5/10</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-secondary/50 dark:bg-dark-bg/60 border border-border-light dark:border-dark-border">
+                                    <span class="text-xs font-bold uppercase text-accent-gold">Flavor Depth</span>
+                                    <div class="text-2xl font-bold font-playfair text-primary dark:text-white mt-1" id="sensory-meter2">Rich & Nutty</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-secondary/50 dark:bg-dark-bg/60 border border-border-light dark:border-dark-border">
+                                    <span class="text-xs font-bold uppercase text-accent-gold">Hydration</span>
+                                    <div class="text-2xl font-bold font-playfair text-primary dark:text-white mt-1" id="sensory-meter3">80%</div>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-secondary/50 dark:bg-dark-bg/60 border border-border-light dark:border-dark-border">
+                                    <span class="text-xs font-bold uppercase text-accent-gold">Digestibility</span>
+                                    <div class="text-2xl font-bold font-playfair text-primary dark:text-white mt-1" id="sensory-meter4">Ultra High</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             SECTION 4: LIVE COMMUNITY MARQUEE REEL & VIP BAKERY INVITATION
+             =================================================================== -->
+        <section class="py-24 bg-primary text-secondary relative overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-96 h-96 bg-accent/20 rounded-full blur-[140px] pointer-events-none"></div>
+            
+            <div class="container mx-auto px-6 mb-16 text-center">
+                <span class="text-accent-gold font-bold tracking-[0.3em] uppercase text-xs">Morning Bakery Moments</span>
+                <h2 class="font-playfair text-4xl md:text-6xl text-white font-bold mt-3 mb-6">
+                    Baked Fresh Every Sunrise
+                </h2>
+                <p class="text-white/80 max-w-2xl mx-auto font-dm text-lg">
+                    Slow-made breads, delicate pastries, and indulgent confections baked fresh every day for our neighborhood tables.
+                </p>
+            </div>
+
+            <!-- Row 1: Leftward Scrolling Photo Marquee -->
+            <div class="marquee-container relative w-full overflow-hidden mb-6 py-2">
+                <div class="marquee-track flex gap-6 w-max animate-marquee">
+                    <!-- Photo 1 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&q=80" alt="Country Sourdough" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#CrumbAndCraft</span>
+                    </div>
+                    <!-- Photo 2 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&q=80" alt="Croissants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#ButterCroissant</span>
+                    </div>
+                    <!-- Photo 3 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?w=500&q=80" alt="Chocolate Tart" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#GanacheTart</span>
+                    </div>
+                    <!-- Photo 4 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=500" alt="Rosemary Olive Loaf" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#OliveLoaf</span>
+                    </div>
+                    <!-- Photo 5 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80" alt="Artisan Bread" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#FreshBakes</span>
+                    </div>
+                    <!-- Photo 6 -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=500&q=80" alt="Sweet Treats" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#SweetTreats</span>
+                    </div>
+                    <!-- Repeat for seamless marquee -->
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&q=80" alt="Country Sourdough" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#CrumbAndCraft</span>
+                    </div>
+                    <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500&q=80" alt="Croissants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30"></div>
+                        <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#ButterCroissant</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Box -->
+            <div class="container mx-auto px-6 mt-16">
+                <div class="bg-gradient-to-r from-accent to-[#D9A441] rounded-[3rem] p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                        <h3 class="font-playfair text-3xl md:text-5xl font-bold">Never Miss Today's Fresh Bakes</h3>
+                        <p class="text-white/95 font-dm text-base md:text-lg leading-relaxed">
+                            Join the Crumb & Craft bakery club for weekly doorstep loaf deliveries, morning croissant selections, and seasonal confectionery boxes.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                            <a href="contact.html" class="bg-white text-primary font-bold px-10 py-4 rounded-full text-base shadow-xl hover:scale-105 transition-transform">
+                                Explore Our Bakes
+                            </a>
+                            <a href="contact.html" class="border-2 border-white text-white font-bold px-10 py-4 rounded-full text-base hover:bg-white/10 transition-colors">
+                                Visit Our Bakery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ===================================================================
+         FULLSCREEN IMAGE LIGHTBOX MODAL
+         =================================================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 md:p-8 opacity-0 pointer-events-none transition-all duration-300"
+        onclick="closeLightbox()">
+        <div id="lightbox-content" class="relative max-w-4xl w-full bg-dark-surface rounded-3xl overflow-hidden border border-white/20 shadow-2xl scale-95 transition-transform duration-300"
+            onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()"
+                class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-accent transition-colors">
+                ✕
+            </button>
+            <div class="h-[55vh] md:h-[65vh] w-full overflow-hidden bg-black">
+                <img id="lightbox-img" src="" alt="Enlarged Bake" class="w-full h-full object-contain">
+            </div>
+            <div class="p-6 md:p-8 bg-dark-surface text-white">
+                <h3 id="lightbox-title" class="font-playfair text-2xl md:text-3xl font-bold mb-2"></h3>
+                <p id="lightbox-caption" class="text-white/70 font-dm text-sm leading-relaxed"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-20 pb-8 px-6 md:px-12 text-[#D4B896]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <!-- About -->
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="text-accent">
+                        <path
+                            d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="font-playfair text-2xl font-bold text-accent">Crumb & Craft</span>
+                </div>
+                <p class="text-sm leading-relaxed opacity-70">Handcrafted Bakes, Made With Heart. Slow-made breads, delicate pastries, and indulgent confections baked fresh every day.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110" aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.411h2.94v-2.518c0-2.91 1.777-4.496 4.375-4.496 1.244 0 2.315.093 2.627.135v3.044h-1.802c-1.411 0-1.685.67-1.685 1.654v2.181h3.371l-.439 3.411h-2.932v8.74h6.14c.731 0 1.325-.593 1.325-1.324v-21.351c0-.732-.594-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110" aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu / Bakes -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Our Bakes</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors italic">Country Sourdough</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors italic">Butter Croissant</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors italic">Chocolate Ganache Cake</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors italic">Salted Caramel Tart</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors italic">Sea Salt Cookies</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Quick Links</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="index.html" class="hover:text-accent transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-accent transition-colors">Our Story</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-accent transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Bakery & Cafe</h4>
+                <ul class="flex flex-col gap-4 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span>📍</span>
+                        <span>123 Artisan Way, Bakery District<br>City Center, 90210</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>✉️</span>
+                        <span>hello@crumbandcraft.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>📞</span>
+                        <span>+1 (555) 234-5678</span>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3 text-white hover:text-white">Visit Our Bakery</a>
+            </div>
+        </div>
+        <div class="border-t border-[#D4B896]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+            <p>&copy; <span id="year"></span> Crumb & Craft Artisanal Bakery & Confectionery. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // 1. Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                galleryCards.forEach(card => {
+                    const cat = card.getAttribute('data-category');
+                    if (filter === 'all' || cat === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 50);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // 2. Lightbox Modal Logic
+        const modal = document.getElementById('lightbox-modal');
+        const modalImg = document.getElementById('lightbox-img');
+        const modalTitle = document.getElementById('lightbox-title');
+        const modalCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(imgSrc, title, caption) {
+            modalImg.src = imgSrc;
+            modalTitle.innerText = title;
+            modalCaption.innerText = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        // 3. Timeline Stage Switching
+        const timelineData = {
+            1: {
+                badge: 'Stage 01: Heritage Milling',
+                title: 'Stone-Milled Heritage Grains',
+                desc: 'We source whole, unbleached grains from independent mills. Cold stone milling preserves the rich germ oils, natural minerals, and rustic aroma that define Crumb & Craft loaves.',
+                img: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=80',
+                metric1Title: 'Hydration',
+                metric1Val: '80% High Hydration',
+                metric2Title: 'Ferment Temp',
+                metric2Val: '24°C / 75°F Ambient'
+            },
+            2: {
+                badge: 'Stage 02: Patience & Cold',
+                title: '36-Hour Natural Fermentation',
+                desc: 'Slow cold fermentation in handcrafted wicker bannetons gives our sourdough a deeper complex flavor, open honeycomb crumb, and incredible natural digestibility.',
+                img: 'https://images.unsplash.com/photo-1595475207225-428b62bda831?w=800&q=80',
+                metric1Title: 'Cellar Temp',
+                metric1Val: '4°C / 39°F Controlled',
+                metric2Title: 'Proof Duration',
+                metric2Val: '36 Hours Slow Rest'
+            },
+            3: {
+                badge: 'Stage 03: The Folding',
+                title: 'Hand Folding & Lamination',
+                desc: 'Every croissant dough is carefully folded by hand with rich European cultured butter into 72 delicate micro-layers that bake into ultra-flaky golden viennoiserie.',
+                img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80',
+                metric1Title: 'Butter Type',
+                metric1Val: 'Cultured French Butter',
+                metric2Title: 'Layer Count',
+                metric2Val: '72 Crisp Layers'
+            },
+            4: {
+                badge: 'Stage 04: The Hearth',
+                title: 'Stone Deck Steam Baking',
+                desc: 'Baked upon scorching stone decks with saturated steam injection. The massive oven spring creates that distinctive blistered golden-brown caramelized crust.',
+                img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80',
+                metric1Title: 'Oven Spring',
+                metric1Val: '+40% Volume Rise',
+                metric2Title: 'Deck Temp',
+                metric2Val: '250°C / 480°F Hearth'
+            }
+        };
+
+        function switchTimeline(stepNum) {
+            const steps = document.querySelectorAll('.timeline-step');
+            steps.forEach((s, i) => {
+                if (i + 1 === stepNum) s.classList.add('active');
+                else s.classList.remove('active');
+            });
+
+            const data = timelineData[stepNum];
+            const panel = document.getElementById('timeline-panel');
+            panel.style.opacity = '0';
+            panel.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                document.getElementById('timeline-badge').innerText = data.badge;
+                document.getElementById('timeline-title').innerText = data.title;
+                document.getElementById('timeline-desc').innerText = data.desc;
+                document.getElementById('timeline-img').src = data.img;
+                document.getElementById('timeline-metrics').innerHTML = `
+                    <div>
+                        <span class="text-xs uppercase font-bold text-accent-gold">${data.metric1Title}</span>
+                        <p class="text-xl font-bold font-playfair">${data.metric1Val}</p>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase font-bold text-accent-gold">${data.metric2Title}</span>
+                        <p class="text-xl font-bold font-playfair">${data.metric2Val}</p>
+                    </div>
+                `;
+                panel.style.opacity = '1';
+                panel.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        // 4. Sensory Tabs Logic
+        const sensoryData = {
+            crumb: {
+                title: 'Honeycomb Aerated Crumb',
+                category: 'Macro Crumb Anatomy',
+                stat: '80% Hydration',
+                img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1000&q=85',
+                m1: '9.5/10',
+                m2: 'Rich & Nutty',
+                m3: '80%',
+                m4: 'Ultra High'
+            },
+            ear: {
+                title: '72-Layer Flaky Croissant Texture',
+                category: 'Lamination & Flakiness',
+                stat: '72 Micro-Layers',
+                img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=1000&q=85',
+                m1: '10/10 Flake',
+                m2: 'Buttery Sweet',
+                m3: 'Light & Airy',
+                m4: 'Pure Joy'
+            },
+            aroma: {
+                title: 'Velvety Single-Origin Chocolate',
+                category: 'Confectionery & Cocoa',
+                stat: '70% Dark Ganache',
+                img: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=1000&q=85',
+                m1: 'Silky Smooth',
+                m2: 'Deep Cocoa',
+                m3: 'Sea Salt Flakes',
+                m4: 'Indulgent'
+            },
+            song: {
+                title: 'Caramelized Hearth Blistered Crust',
+                category: 'Crust & Aroma',
+                stat: 'Deck Baked',
+                img: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=1000&q=85',
+                m1: 'Audible Crunch',
+                m2: 'Toasted Hazelnut',
+                m3: 'Golden Brown',
+                m4: 'Natural Tang'
+            }
+        };
+
+        function switchSensoryTab(tabKey) {
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const item = sensoryData[tabKey];
+            const img = document.getElementById('sensory-img');
+            img.style.opacity = '0';
+            img.style.transform = 'scale(0.95)';
+
+            setTimeout(() => {
+                img.src = item.img;
+                document.getElementById('sensory-category').innerText = item.category;
+                document.getElementById('sensory-title').innerText = item.title;
+                document.getElementById('sensory-stat').innerText = item.stat;
+                document.getElementById('sensory-meter1').innerText = item.m1;
+                document.getElementById('sensory-meter2').innerText = item.m2;
+                document.getElementById('sensory-meter3').innerText = item.m3;
+                document.getElementById('sensory-meter4').innerText = item.m4;
+                img.style.opacity = '1';
+                img.style.transform = 'scale(1)';
+            }, 300);
+        }
+    </script>
+</body>
+
+</html>

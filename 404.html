@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Page Not Found | Crumb & Craft Artisanal Bakery</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3A1E2D',
+                        secondary: '#FFFDF9',
+                        accent: '#BA5C3D',
+                        'accent-gold': '#E8B958',
+                        bordeaux: '#3A1E2D',
+                        vanilla: '#F8F2E8',
+                        espresso: '#1E1418',
+                        'dark-bg': '#140B10',
+                        'dark-surface': '#22131C',
+                        'dark-border': '#3D2434',
+                    },
+                    fontFamily: {
+                        playfair: ['Cormorant Garamond', 'serif'],
+                        dm: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+</head>
+
+<body class="bg-secondary dark:bg-dark-bg text-espresso dark:text-gray-200 transition-colors min-h-screen flex flex-col font-dm">
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold tracking-wide text-primary dark:text-white">Crumb & Craft</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="gallery.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Gallery</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <div class="hidden xl:flex items-center gap-3">
+                    <a href="contact.html" class="btn-primary py-2 px-4 text-sm">Join Club</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold text-primary dark:text-white">Menu</span>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="gallery.html" class="py-3 border-b border-border-light dark:border-dark-border">Gallery</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="contact.html" class="btn-primary text-center">Join Club</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="container mx-auto max-w-4xl animate-heroReveal text-center py-20 px-6 flex-1 flex flex-col justify-center">
+        <div class="relative mb-12">
+            <!-- Animated 404 -->
+            <div
+                class="animate-breadRise flex justify-center items-center gap-4 text-[100px] md:text-[180px] font-playfair font-bold text-accent relative">
+                <span>4</span>
+                <div
+                    class="w-28 h-28 md:w-48 md:h-48 bg-accent rounded-full border-8 border-white dark:border-dark-surface shadow-2xl flex items-center justify-center text-white text-4xl md:text-7xl animate-leavenBubble font-playfair">
+                    🥐</div>
+                <span>4</span>
+            </div>
+        </div>
+
+        <div class="max-w-2xl mx-auto mb-16 px-6">
+            <h1 class="font-playfair text-4xl md:text-6xl font-bold mb-4 text-primary dark:text-white">Where's the <span class="text-accent italic">Crumb?</span></h1>
+            <p class="text-lg md:text-xl text-stone-600 dark:text-stone-300 mb-10 leading-relaxed font-dm">Even the most attentive bakers lose a recipe page sometimes. The page you're hunting for doesn't seem to exist.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto w-full">
+            <a href="index.html" class="bread-card p-8 bg-white dark:bg-dark-surface rounded-2xl shadow-md flex flex-col items-center hover:scale-105 transition-all border border-border-light dark:border-dark-border">
+                <span class="text-3xl mb-3">🏠</span>
+                <h4 class="font-playfair text-lg font-bold text-primary dark:text-white">Bakery Home</h4>
+            </a>
+            <a href="gallery.html" class="bread-card p-8 bg-white dark:bg-dark-surface rounded-2xl shadow-md flex flex-col items-center hover:scale-105 transition-all border border-border-light dark:border-dark-border">
+                <span class="text-3xl mb-3">🥖</span>
+                <h4 class="font-playfair text-lg font-bold text-primary dark:text-white">Explore Our Bakes</h4>
+            </a>
+            <a href="contact.html" class="bread-card p-8 bg-white dark:bg-dark-surface rounded-2xl shadow-md flex flex-col items-center hover:scale-105 transition-all border border-border-light dark:border-dark-border">
+                <span class="text-3xl mb-3">📍</span>
+                <h4 class="font-playfair text-lg font-bold text-primary dark:text-white">Visit Our Bakery</h4>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-vanilla dark:bg-[#18110D] border-t border-border-light dark:border-dark-border py-10">
+        <div class="container mx-auto px-4 text-center text-stone-500 dark:text-stone-400 text-sm">
+            <p>© 2026 Crumb & Craft. Handcrafted Bakes, Made With Heart.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Contact Us | Crumb & Craft Artisanal Bakery</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3A1E2D',
+                        secondary: '#FFFDF9',
+                        accent: '#BA5C3D',
+                        'accent-gold': '#E8B958',
+                        bordeaux: '#3A1E2D',
+                        vanilla: '#F8F2E8',
+                        espresso: '#1E1418',
+                        'dark-bg': '#140B10',
+                        'dark-surface': '#22131C',
+                        'dark-border': '#3D2434',
+                    },
+                    fontFamily: {
+                        playfair: ['Cormorant Garamond', 'serif'],
+                        dm: ['Manrope', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+</head>
+
+<body class="bg-secondary dark:bg-dark-bg text-espresso dark:text-gray-200 transition-colors font-dm">
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold tracking-wide text-primary dark:text-white">Crumb & Craft</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="gallery.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Gallery</a>
+                <a href="contact.html" class="nav-link-underline font-medium text-accent font-semibold">Contact</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <div class="hidden xl:flex items-center gap-3">
+                    <a href="contact.html" class="btn-primary py-2 px-4 text-sm">Join Club</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold text-primary dark:text-white">Menu</span>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="gallery.html" class="py-3 border-b border-border-light dark:border-dark-border">Gallery</a>
+            <a href="contact.html"
+                class="py-3 border-b border-border-light dark:border-dark-border text-accent font-semibold">Contact</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="contact.html" class="btn-primary text-center">Join Club</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main>
+        <!-- Contact Hero -->
+        <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&q=80" alt="Crumb and Craft Bakery"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/75 to-primary/95"></div>
+            </div>
+            <div class="relative z-10 text-center px-6 animate-heroReveal">
+                <p class="text-accent-gold font-bold uppercase tracking-[0.4em] text-xs md:text-sm mb-4">ARTISAN BAKERY · FRESH DAILY</p>
+                <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">Say
+                    <span class="text-accent italic">Hello</span>
+                </h1>
+                <p class="text-white/80 max-w-xl mx-auto text-lg leading-relaxed font-dm">Slow-made breads, delicate pastries, and warm conversations. Reach out to our bakers or stop by the shop.</p>
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-secondary dark:from-dark-bg to-transparent">
+            </div>
+        </section>
+
+        <!-- Contact Info Cards -->
+        <section class="py-16 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="bread-card p-10 flex flex-col items-center text-center scroll-reveal border-2 border-accent/15 bg-white dark:bg-dark-surface rounded-3xl shadow-sm">
+                        <div
+                            class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-6 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.6 16z" />
+                            </svg>
+                        </div>
+                        <h4 class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">Phone the Bakery</h4>
+                        <p class="text-sm font-semibold text-stone-600 dark:text-stone-300 tracking-wider">+1 (555) 234-5678</p>
+                    </div>
+                    <div class="bread-card p-10 flex flex-col items-center text-center scroll-reveal border-2 border-accent/15 bg-white dark:bg-dark-surface rounded-3xl shadow-sm"
+                        style="transition-delay: 0.1s;">
+                        <div
+                            class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-6 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                        </div>
+                        <h4 class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">Email the Kitchen</h4>
+                        <p class="text-sm font-semibold text-stone-600 dark:text-stone-300 tracking-wider">hello@crumbandcraft.com</p>
+                    </div>
+                    <div class="bread-card p-10 flex flex-col items-center text-center scroll-reveal border-2 border-accent/15 bg-white dark:bg-dark-surface rounded-3xl shadow-sm"
+                        style="transition-delay: 0.2s;">
+                        <div
+                            class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-6 shadow-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <h4 class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">Visit the Hearth</h4>
+                        <p class="text-sm font-semibold text-stone-600 dark:text-stone-300 tracking-wider">123 Artisan Way, Bakery District</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Contact Form -->
+        <section
+            class="py-24 px-6 md:px-12 bg-vanilla dark:bg-dark-surface/30 relative overflow-hidden ring-1 ring-accent/5">
+            <div class="container mx-auto flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2 scroll-reveal text-center">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
+                        alt="Crumb and Craft Artisanal Baking"
+                        class="w-full h-[600px] object-cover rounded-3xl shadow-2xl border-8 border-white dark:border-dark-surface">
+                </div>
+                <div class="lg:w-1/2 w-full bread-card p-10 md:p-14 bg-white dark:bg-dark-surface shadow-2xl rounded-3xl scroll-reveal border border-border-light dark:border-dark-border"
+                    style="transition-delay: 0.1s;">
+                    <form class="flex flex-col gap-6" onsubmit="event.preventDefault(); alert('Thank you for reaching out to Crumb & Craft! Our bakers will reply shortly.'); this.reset();">
+                        <h3
+                            class="font-playfair text-4xl font-bold mb-2 text-primary dark:text-white">
+                            Let's <span class="text-accent italic">Connect</span></h3>
+                        <p class="text-sm text-stone-500 dark:text-stone-400 mb-2">Have a question about custom cakes, catering, or today's fresh bread batch? Send us a message.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400">Full
+                                    Name</label>
+                                <input type="text" required placeholder="Jane Smith"
+                                    class="bg-secondary/40 dark:bg-dark-bg p-4 border border-border-light dark:border-dark-border rounded-xl outline-none focus:ring-2 focus:ring-accent font-dm text-sm tracking-wide text-primary dark:text-white">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-xs font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400">Email
+                                    Address</label>
+                                <input type="email" required placeholder="jane@example.com"
+                                    class="bg-secondary/40 dark:bg-dark-bg p-4 border border-border-light dark:border-dark-border rounded-xl outline-none focus:ring-2 focus:ring-accent font-dm text-sm tracking-wide text-primary dark:text-white">
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400">Subject</label>
+                            <select
+                                class="p-4 bg-secondary/40 dark:bg-dark-bg border border-border-light dark:border-dark-border rounded-xl outline-none focus:ring-2 focus:ring-accent font-dm text-sm text-primary dark:text-white">
+                                <option>General Inquiry / Today's Bakes</option>
+                                <option>Custom Cakes & Confectionery</option>
+                                <option>Wholesale & Restaurant Supply</option>
+                                <option>Bakery Workshops</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold uppercase tracking-widest text-stone-500 dark:text-stone-400">Your Message</label>
+                            <textarea required placeholder="How can our bakery assist you today?" rows="4"
+                                class="bg-secondary/40 dark:bg-dark-bg p-4 border border-border-light dark:border-dark-border rounded-xl outline-none focus:ring-2 focus:ring-accent font-dm text-sm leading-relaxed text-primary dark:text-white"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="btn-primary py-4 text-lg font-bold shadow-xl transition-all hover:scale-102">Send
+                            Message →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Direct Inquiry Split -->
+        <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                    <div class="p-8 border-border-light dark:border-dark-border md:border-r scroll-reveal">
+                        <h4
+                            class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">
+                            Wholesale Bakes</h4>
+                        <p class="text-sm text-stone-600 dark:text-stone-400 mb-6 leading-relaxed">Want to serve our fresh sourdough loaves, baguettes, and morning pastries in your café or restaurant? We bake and deliver before sunrise.</p>
+                        <a href="mailto:wholesale@crumbandcraft.com"
+                            class="text-accent font-bold uppercase tracking-widest text-xs hover:text-primary transition-colors">wholesale@crumbandcraft.com
+                            →</a>
+                    </div>
+                    <div class="p-8 border-border-light dark:border-dark-border md:border-r scroll-reveal"
+                        style="transition-delay: 0.1s;">
+                        <h4
+                            class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">
+                            Custom Cakes & Tarts</h4>
+                        <p class="text-sm text-stone-600 dark:text-stone-400 mb-6 leading-relaxed">Celebrate special moments with handcrafted chocolate ganache cakes, fruit tarts, and custom dessert spreads made to order.</p>
+                        <a href="#contact"
+                            class="text-accent font-bold uppercase tracking-widest text-xs hover:text-primary transition-colors">Order A Custom Cake →</a>
+                    </div>
+                    <div class="p-8 scroll-reveal" style="transition-delay: 0.2s;">
+                        <h4
+                            class="font-playfair text-2xl font-bold mb-3 text-primary dark:text-white">
+                            Bakery Careers</h4>
+                        <p class="text-sm text-stone-600 dark:text-stone-400 mb-6 leading-relaxed">We're always looking for early risers with a passion for slow fermentation, viennoiserie, and confectionery craftsmanship.</p>
+                        <a href="mailto:careers@crumbandcraft.com"
+                            class="text-accent font-bold uppercase tracking-widest text-xs hover:text-primary transition-colors">Join Our Kitchen →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Geographic Presence (Map Section) -->
+        <section
+            class="relative h-[500px] w-full overflow-hidden bg-secondary dark:bg-dark-bg border-y border-border-light dark:border-dark-border">
+            <div class="absolute inset-0 z-0">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937595!2d2.3311893!3d48.8583489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e288e285d8d%3A0x67347a2491a6d96e!2s42%20Rue%20Bonaparte%2C%2075006%20Paris%2C%20France!5e0!3m2!1sen!2sus!4v1711786542000!5m2!1sen!2sus"
+                    class="w-full h-full grayscale-[0.2] contrast-[1.05] dark:opacity-60 dark:invert-[0.9] dark:hue-rotate-[180deg]"
+                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <!-- Map Overlay Card -->
+            <div class="container mx-auto px-6 h-full relative z-10 pointer-events-none flex items-center justify-end">
+                <div
+                    class="bread-card p-10 bg-white/95 dark:bg-dark-surface/95 backdrop-blur-xl shadow-2xl border-2 border-accent/20 max-w-sm pointer-events-auto scroll-reveal rounded-3xl">
+                    <p class="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-4">Visit Our Bakery</p>
+                    <h3 class="font-playfair text-3xl md:text-4xl font-bold mb-4 leading-tight text-primary dark:text-white">123 Artisan <br> Way</h3>
+                    <p class="text-sm text-stone-600 dark:text-stone-300 mb-6 leading-relaxed font-dm">Stop by for morning coffee, oven-fresh sourdough, flaky croissants, and seasonal sweet confections.</p>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-1">
+                            <span class="text-xs font-bold uppercase tracking-widest text-stone-400">Opening Hours</span>
+                            <p class="text-sm font-bold text-primary dark:text-white">Tue — Sun: 6:30 AM — 5:00 PM</p>
+                        </div>
+                        <a href="https://maps.google.com" target="_blank"
+                            class="text-accent font-bold uppercase tracking-widest text-xs underline underline-offset-8 hover:text-primary transition-colors">Open
+                            in Maps →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-20 pb-8 px-6 md:px-12 text-[#FFFDF8]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <!-- About -->
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="text-accent">
+                        <path
+                            d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="font-playfair text-2xl font-bold text-white">Crumb & Craft</span>
+                </div>
+                <p class="text-sm leading-relaxed text-white/75">Slow-made breads, delicate pastries, and indulgent confections baked fresh every day with heart and premium ingredients.</p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-white/20 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.411h2.94v-2.518c0-2.91 1.777-4.496 4.375-4.496 1.244 0 2.315.093 2.627.135v3.044h-1.802c-1.411 0-1.685.67-1.685 1.654v2.181h3.371l-.439 3.411h-2.932v8.74h6.14c.731 0 1.325-.593 1.325-1.324v-21.351c0-.732-.594-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-white/20 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Our Bakes</h4>
+                <ul class="flex flex-col gap-3 text-sm text-white/75">
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Country Sourdough</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Butter & Almond Croissants</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Rustic Multigrain Loaf</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Chocolate Ganache Cake</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Salted Caramel Tart</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Quick Links</h4>
+                <ul class="flex flex-col gap-3 text-sm text-white/75">
+                    <li><a href="index.html" class="hover:text-accent transition-colors">Home</a></li>
+                    <li><a href="about.html" class="hover:text-accent transition-colors">Our Story</a></li>
+                    <li><a href="gallery.html" class="hover:text-accent transition-colors">Gallery</a></li>
+                    <li><a href="contact.html" class="hover:text-accent transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Contact</h4>
+                <ul class="flex flex-col gap-4 text-sm text-white/75">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-0.5 flex-shrink-0 text-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </span>
+                        <span>123 Artisan Way, Hearth District</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="flex-shrink-0 text-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2" />
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                            </svg>
+                        </span>
+                        <span>hello@crumbandcraft.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="flex-shrink-0 text-accent">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.6 16z" />
+                            </svg>
+                        </span>
+                        <span>+1 (555) 234-5678</span>
+                    </li>
+                </ul>
+                <a href="contact.html"
+                    class="btn-primary mt-6 inline-block w-full text-center text-sm py-3 text-white hover:text-white">Visit Our Bakery</a>
+            </div>
+        </div>
+        <div
+            class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
+            <p>&copy; 2026 Crumb & Craft. Handcrafted Bakes, Made With Heart.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
