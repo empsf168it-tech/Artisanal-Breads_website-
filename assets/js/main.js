@@ -46,13 +46,16 @@ function initHeaderScroll() {
     const header = document.querySelector('header');
     if (!header) return;
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+    const onScroll = () => {
+        if (window.scrollY > 20) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 }
 
 // --- THEME ---
@@ -86,7 +89,7 @@ function initMobileNav() {
 
     const toggleSidebar = (isOpen) => {
         sidebar.classList.toggle('open', isOpen);
-        overlay.classList.toggle('open', isOpen);
+        if (overlay) overlay.classList.toggle('open', isOpen);
         hamburger.setAttribute('aria-expanded', isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : '';
     };
@@ -94,6 +97,11 @@ function initMobileNav() {
     hamburger.addEventListener('click', () => toggleSidebar(true));
     closeBtn?.addEventListener('click', () => toggleSidebar(false));
     overlay?.addEventListener('click', () => toggleSidebar(false));
+
+    // Close when clicking nav links in sidebar
+    sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => toggleSidebar(false));
+    });
 
     // Escape Key to close
     window.addEventListener('keydown', (e) => {

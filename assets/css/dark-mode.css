@@ -52,6 +52,54 @@
     color: #FFFDF9;
 }
 
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] a.btn-primary,
+[data-theme="dark"] button.btn-primary {
+    background-color: #E8B958 !important;
+    color: #140B10 !important;
+    font-weight: 700;
+}
+
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] a.btn-primary:hover,
+[data-theme="dark"] button.btn-primary:hover {
+    background-color: #FFFDF9 !important;
+    color: #140B10 !important;
+    box-shadow: 0 4px 16px rgba(232, 185, 88, 0.35);
+}
+
+[data-theme="dark"] .step-number {
+    background-color: #E8B958 !important;
+    color: #140B10 !important;
+}
+
+[data-theme="dark"] .step-card:hover .step-number {
+    background-color: #FFFDF9 !important;
+    color: #140B10 !important;
+    box-shadow: 0 0 25px rgba(232, 185, 88, 0.5);
+}
+
+[data-theme="dark"] .cta-bakes-btn {
+    background-color: #FFFDF9 !important;
+    color: #140B10 !important;
+}
+
+[data-theme="dark"] .cta-bakes-btn:hover {
+    background-color: #E8B958 !important;
+    color: #140B10 !important;
+    box-shadow: 0 10px 30px rgba(232, 185, 88, 0.4);
+}
+
+[data-theme="dark"] .bg-white.text-primary,
+[data-theme="dark"] a.bg-white.text-primary {
+    color: #140B10 !important;
+}
+
+[data-theme="dark"] .bg-white.text-primary:hover,
+[data-theme="dark"] a.bg-white.text-primary:hover {
+    color: #140B10 !important;
+}
+
 [data-theme="dark"] .btn-secondary {
     border-color: #E8B958;
     color: #E8B958;
@@ -60,4 +108,10 @@
 [data-theme="dark"] .btn-secondary:hover {
     background-color: #E8B958;
     color: #140B10;
+}
+
+/* Contact Page & Global CTA text hover visibility in dark mode */
+[data-theme="dark"] a.text-accent:hover,
+[data-theme="dark"] a[class*="hover:text-primary"]:hover {
+    color: #FFFDF9 !important;
 }

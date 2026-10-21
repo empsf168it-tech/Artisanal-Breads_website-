@@ -122,7 +122,7 @@
 
     <!-- Header -->
     <header
-        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        class="fixed top-0 left-0 right-0 w-full z-[1000] bg-secondary/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
         <div class="container mx-auto flex items-center justify-between w-full">
             <!-- Logo -->
             <a href="index.html" class="flex items-center gap-2">
@@ -340,9 +340,9 @@
                     <!-- Item 4: Rosemary Olive Loaf -->
                     <div class="gallery-card group relative rounded-3xl overflow-hidden shadow-xl bg-white dark:bg-dark-surface border border-border-light dark:border-dark-border cursor-pointer"
                         data-category="sourdough"
-                        onclick="openLightbox('https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=1200', 'Rosemary Olive Sourdough', 'Loaded with fresh garden herbs, Kalamata olives, and cold-pressed olive oil.')">
+                        onclick="openLightbox('https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=1200&q=90', 'Rosemary Olive Sourdough', 'Loaded with fresh garden herbs, Kalamata olives, and cold-pressed olive oil.')">
                         <div class="relative h-[380px] overflow-hidden">
-                            <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=800"
+                            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80"
                                 alt="Rosemary Olive Sourdough"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
@@ -579,7 +579,7 @@
                             </div>
 
                             <!-- Sensory Profile Attributes -->
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                            <div id="sensory-profile-grid" class="sensory-profile-grid grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4 text-center">
                                 <div class="p-4 rounded-2xl bg-secondary/50 dark:bg-dark-bg/60 border border-border-light dark:border-dark-border">
                                     <span class="text-xs font-bold uppercase text-accent-gold">Crunch Level</span>
                                     <div class="text-2xl font-bold font-playfair text-primary dark:text-white mt-1" id="sensory-meter1">9.5/10</div>
@@ -644,7 +644,7 @@
                     </div>
                     <!-- Photo 4 -->
                     <div class="w-[300px] h-[220px] rounded-2xl overflow-hidden shadow-2xl shrink-0 border border-white/10 relative group">
-                        <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=500" alt="Rosemary Olive Loaf" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&q=80" alt="Rosemary Olive Loaf" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-black/30"></div>
                         <span class="absolute bottom-3 left-3 text-xs font-bold text-white bg-black/50 backdrop-blur-md px-3 py-1 rounded-full">#OliveLoaf</span>
                     </div>
@@ -787,7 +787,7 @@
                         <span>+1 (555) 234-5678</span>
                     </li>
                 </ul>
-                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3 text-white hover:text-white">Visit Our Bakery</a>
+                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3">Visit Our Bakery</a>
             </div>
         </div>
         <div class="border-t border-[#D4B896]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
